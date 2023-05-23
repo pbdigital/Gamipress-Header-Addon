@@ -44,9 +44,15 @@ if(file_exists(plugin_dir_path( __FILE__ ).'core-init.php')){
 }
 /* Activation Requirements End */
 
-// Include our updater file
-include_once( plugin_dir_path( __FILE__ ).'class/pbd-addon-updater.class.php' );
-$updater = new PBD_Addon_Updater( __FILE__ ); // instantiate our class
-$updater->set_username( 'pbdigital' ); // set username
-$updater->set_repository( 'Gamipress-Header-Addon' ); // set repo
-$updater->initialize(); // initialize the updater
+
+require plugin_dir_path( __FILE__ ).'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/pbdigital/Gamipress-Header-Addon',
+	__FILE__,
+	'Gamipress-Header-Addon'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
