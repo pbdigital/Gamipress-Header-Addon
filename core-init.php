@@ -84,7 +84,7 @@ function point_level_load_scripts()
       if (!empty($rank)) {
          $rank_img = get_the_post_thumbnail_url($current_rank_id);
          if (!$rank_img) {
-            $rank_img = get_the_post_thumbnail_url($points['ID']); //fallback for rank image
+            $rank_img = get_the_post_thumbnail_url($rank['ID']); //fallback for rank image
          }
       }
       $coins = gamipress_get_points_type($pbd_coins_type);
