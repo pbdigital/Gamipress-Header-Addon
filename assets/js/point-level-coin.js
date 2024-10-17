@@ -1,3 +1,4 @@
+// File: assets/js/point-level-coin.js
 (function($) {
     'use strict';
 
@@ -9,7 +10,7 @@
     // Helper functions
     const createCoinsElement = (vars) => {
         return `
-            <a style="display: flex; align-items: center; margin-right: 35px" href="${vars.redeem_screen}" data-balloon-pos="down" data-balloon="Earn coins to unlock goodies" class="${COINS_CLASS}">
+            <a href="${vars.redeem_screen}" class="${COINS_CLASS}" style="display: flex; align-items: center; margin-right: 35px;" data-balloon-pos="down" data-balloon="Earn coins to unlock goodies">
                 <div style="display: flex; justify-content: center; align-items: center; border-radius: 50%;">
                     <img src="${vars.coins_img}" style="max-width:40px; border:none;" alt="Coins">
                 </div>
@@ -22,21 +23,21 @@
 
     const createGamificationElement = (vars) => {
         return `
-            <div style="display: flex; align-items: center; margin-right: 35px" class="${GAMIFICATION_CLASS}">
-                <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background: ${vars.buddy_theme_accent_color}" class="trophy">
-                    <img src="${vars.rank_img}" style="width: 50px" alt="Rank">
+            <div class="${GAMIFICATION_CLASS}" style="display: flex; align-items: center; margin-right: 35px;">
+                <div class="trophy" style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background: ${vars.buddy_theme_accent_color};">
+                    <img src="${vars.rank_img}" style="width: 50px;" alt="Rank">
                 </div>
                 <div style="display: flex; flex-direction: column; min-width: 200px; padding-left: 15px;">
-                    <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: center">
+                    <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: center;">
                         <div style="font-size: 15px;">
                             ${vars.current_rank}
                         </div>
-                        <div style="font-size: 12px">
+                        <div style="font-size: 12px;">
                             <span id="points">${vars.current_points}</span> / ${vars.points_needed}
                         </div>
                     </div>
-                    <div style="padding-top: 5px">
-                        <div style="width:100%; height: 8px; background-color: #EBF0F4; border-radius: 10px">
+                    <div style="padding-top: 5px;">
+                        <div style="width:100%; height: 8px; background-color: #EBF0F4; border-radius: 10px;">
                             <div class="progress_bar" style="width:${vars.completion}%; height: 8px; border-radius: 10px; background: ${vars.buddy_theme_accent_color};">
                             </div>
                         </div>
