@@ -8,7 +8,7 @@
  * Plugin Name:     PB Digital - Gamipress Points/Levels/Coins Header Add-on
  * Plugin URI:      https://pbdigital.com.au
  * Description:     Adds points, levels, and coins display to the header using GamiPress.
- * Version:         1.2.0
+ * Version:         1.3.0
  * Author:          Paul Bright
  * Author URI:      https://pbdigital.com.au
  * Text Domain:     pb-digital-gamipress-header-addon
