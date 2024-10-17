@@ -48,10 +48,14 @@
 
     // Main function
     const initPointLevelCoin = () => {
+        console.log('Initializing Point Level Coin');
+
         if (typeof point_level_vars === 'undefined') {
             console.error('point_level_vars is not defined');
             return;
         }
+
+        console.log('point_level_vars:', point_level_vars);
 
         const $headerAside = $(HEADER_ASIDE_SELECTOR);
         if ($headerAside.length === 0) {
@@ -59,16 +63,43 @@
             return;
         }
 
-        if (point_level_vars.redeem_screen && point_level_vars.coins_img && point_level_vars.current_coins) {
-            $headerAside.prepend(createCoinsElement(point_level_vars));
+        console.log('Header aside element found');
+
+        // Check for required variables and provide default values if missing
+        const redeem_screen = point_level_vars.redeem_screen || 'javascript:void(0)';
+        const coins_img = point_level_vars.coins_img || 'path/to/default-coins-image.png';
+        const current_coins = point_level_vars.current_coins || '0';
+
+        if (redeem_screen && coins_img && current_coins) {
+            console.log('Adding coins element');
+            $headerAside.prepend(createCoinsElement({
+                redeem_screen,
+                coins_img,
+                current_coins
+            }));
+        } else {
+            console.warn('Missing required variables for coins element');
+            console.log('redeem_screen:', redeem_screen);
+            console.log('coins_img:', coins_img);
+            console.log('current_coins:', current_coins);
         }
 
         if (point_level_vars.rank_img && point_level_vars.points_needed && point_level_vars.current_rank) {
+            console.log('Adding gamification element');
             $headerAside.prepend(createGamificationElement(point_level_vars));
+        } else {
+            console.warn('Missing required variables for gamification element');
+            console.log('rank_img:', point_level_vars.rank_img);
+            console.log('points_needed:', point_level_vars.points_needed);
+            console.log('current_rank:', point_level_vars.current_rank);
         }
+
+        console.log('Point Level Coin initialization complete');
     };
 
     // Initialize on document ready
-    $(document).ready(initPointLevelCoin);
-
+    $(document).ready(() => {
+        console.log('Document ready, calling initPointLevelCoin');
+        initPointLevelCoin();
+    });
 })(jQuery);
